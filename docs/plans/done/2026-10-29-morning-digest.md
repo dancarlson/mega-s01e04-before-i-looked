@@ -1,6 +1,6 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
 ---
@@ -77,3 +77,20 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Completed work
+
+The reviewer confirmed seeing the preview before cleanup. The public page was then regenerated with `LANE_MARKER` unset and replaced at the same URL after human approval. The previous marked deploy was deleted and its permalink now returns 404.
+
+Preview: https://dancarlson-mega-s01e04.netlify.app/
+
+## Issues
+
+- [#1 — Digest types and reader contract](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/1)
+- [#2 — Read and aggregate the nightly run log](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/2)
+- [#3 — Render the digest page](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/3)
+- [#4 — Expose digest JSON](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/4)
+- [#5 — Link board nights to their digests](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/5)
+- [#6 — Test digest HTML and JSON routes](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/6)
+- [#7 — Publish the HTML preview for review](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/7)
+- [#8 — Remove the public marker and archive the plan](https://github.com/dancarlson/mega-s01e04-before-i-looked/issues/8)
