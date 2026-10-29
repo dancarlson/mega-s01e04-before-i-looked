@@ -13,6 +13,21 @@ describe('status board', () => {
     expect(html).toContain('2026-10-28');
   });
 
+  it('links each fixture night to a digest and shows its event counts', async () => {
+    const app = createApp(config);
+    const board = await (await app.request('/')).text();
+    expect(board).toContain('<a href="/digest/2026-10-28">2026-10-28</a>');
+    expect(board).toContain('ok 10 · retry 4 · fail 1');
+    expect(board).toContain('<a href="/digest/2026-10-27">2026-10-27</a>');
+    expect(board).toContain('ok 7 · retry 0 · fail 0');
+
+    for (const night of ['2026-10-27', '2026-10-28']) {
+      const digest = await app.request(`/digest/${night}`);
+      expect(digest.status).toBe(200);
+      expect(await digest.text()).toContain(`digest · ${night}`);
+    }
+  });
+
   it('health answers with the lane id', async () => {
     const res = await createApp(config).request('/health');
     expect(await res.json()).toEqual({ ok: true, lane: 'lane-07' });

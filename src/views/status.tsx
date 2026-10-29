@@ -1,6 +1,15 @@
 import type { Status } from '../status.js';
+import type { RunStatus } from '../digest/types.js';
 
-export function StatusBoard({ status }: { status: Status }) {
+type NightCounts = Record<RunStatus, number>;
+
+export function StatusBoard({
+  status,
+  nightCounts,
+}: {
+  status: Status;
+  nightCounts: Record<string, NightCounts | null>;
+}) {
   return (
     <>
       <h1>status</h1>
@@ -20,7 +29,12 @@ export function StatusBoard({ status }: { status: Status }) {
       ) : (
         <ul>
           {status.nights.map((n) => (
-            <li>{n}</li>
+            <li>
+              <a href={`/digest/${n}`}>{n}</a>
+              {' · ok '}{nightCounts[n]?.ok ?? '—'}
+              {' · retry '}{nightCounts[n]?.retry ?? '—'}
+              {' · fail '}{nightCounts[n]?.fail ?? '—'}
+            </li>
           ))}
         </ul>
       )}
